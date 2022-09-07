@@ -5,3 +5,35 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+User.create(
+    avatar: 'yay',
+    name: "Johnny Boy",
+    email: "yo@gmail.com",
+    username: "JB",
+    password: "123456",
+    age: 21,
+    gender: "male",
+    sexuality: "gay",
+    location: "Chicago",
+    bio: "Coolest guy in town"
+)
+
+User.create(
+    avatar: 'woah',
+    name: "Bohnny Joy",
+    email: "no@gmail.com",
+    username: "BJ",
+    password: "654321",
+    gender: "male",
+    sexuality: "gay",
+    location: "New York",
+    bio: "sweetest guy in town"
+)
+
+Match.create(
+    user_1_match: true,
+    user_2_match: true,
+    user_1_id: 1,
+    user_2_id: 2
+)
