@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "seeding users"
+
 User.create(
     avatar: 'yay',
     name: "Johnny Boy",
@@ -23,6 +25,7 @@ User.create(
     avatar: 'woah',
     name: "Bohnny Joy",
     email: "no@gmail.com",
+    age: 22,
     username: "BJ",
     password: "654321",
     gender: "male",
@@ -30,6 +33,8 @@ User.create(
     location: "New York",
     bio: "sweetest guy in town"
 )
+
+puts "seeding matches"
 
 Match.create(
     user_1_match: true,
