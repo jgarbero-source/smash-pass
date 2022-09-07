@@ -1,2 +1,3 @@
 class Match < ApplicationRecord
+    validates :user_1_id, :user_2_id, presence: true
 end
