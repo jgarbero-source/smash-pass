@@ -14,22 +14,22 @@ import Footer from "./components/Footer";
 
 function App() {
 
-  const userURL = "http://localhost:9292/users"
+  const userURL = "/me"
   const [currentUser, setCurrentUser] = useState([]);
-  const profilesURL = "http://localhost:9292/profiles"
+  const profilesURL = "/profiles"
   const [profiles, setProfiles] = useState([]);
   const [profileCount, setProfileCount] = useState(0);
   const [isItTheEnd, setIsItTheEnd] = useState(false)
   const [ background, setBackground ] = useState(true)
 
   useEffect(() => {
-    async function goGetEm() {
-      await fetch(userURL)
+    function goGetEm() {
+      fetch(userURL)
         .then((response) => response.json())
-        .then(async (data) => {
-          setCurrentUser(data[0]);
-          const user = data[0].id
-          //console.log(data[0]) 
+        .then((data) => {
+          console.log(data)
+          setCurrentUser(data);
+          const user = data.id
           fetch(`${profilesURL}/swiper/${user}`)
             .then((response) => response.json())
             .then(data => {

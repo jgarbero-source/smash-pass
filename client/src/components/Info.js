@@ -12,7 +12,7 @@ function Info() {
     let navigate = useNavigate()
     const { id } = useParams();
     const [profileData, setProfileData] = useState({})
-    const profileUrl = "http://localhost:9292/profiles"
+    const profileUrl = "/profiles"
 
     useEffect(() => {
         fetch(`${profileUrl}/${id}`)

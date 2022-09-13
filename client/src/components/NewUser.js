@@ -16,11 +16,11 @@ function NewUser({setIsItTheEnd, setProfiles, profiles}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch(`http://localhost:9292/users`, {
+        console.log(formData)
+        fetch(`/users`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(formData)
         }

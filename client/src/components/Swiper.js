@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 
 function Swiper({ currentUser, profiles, profileCount, setProfileCount, isItTheEnd, setIsItTheEnd }) {
 
-    const matchURL = "http://localhost:9292/matches"
+    const matchURL = "/matches"
     
     function handleLike() {
         checkForMatch(true)

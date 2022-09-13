@@ -20,7 +20,7 @@ function EditForm({ currentUser, setCurrentUser }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch(`http://localhost:9292/users/${id}`, {
+        fetch(`users/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
