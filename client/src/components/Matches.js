@@ -4,7 +4,7 @@ import ProfileCard from "./ProfileCard.js"
 function Matches({ currentUser }) {
     // console.log(currentUser.id)
 
-    const matchURL = "http://localhost:9292/matches"
+    const matchURL = "/matches"
     const [matches, setMatches] = useState([]);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ function Matches({ currentUser }) {
     }, [currentUser]);
 
     async function handleUnmatch(profileId) {
-        await fetch(`http://localhost:9292/matches/${currentUser.id}/${profileId}/delete`, {
+        await fetch(`${matchURL}/${currentUser.id}/${profileId}/delete`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",

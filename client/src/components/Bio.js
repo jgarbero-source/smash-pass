@@ -5,7 +5,7 @@ function Bio({ bio }) {
 
     return (
         <div>
-            <BioForm bio={bio} />
+            {bio ? <BioForm bio={bio} />: null}
         </div>
     )
 }
