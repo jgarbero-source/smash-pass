@@ -6,18 +6,19 @@ function NewUser({setIsItTheEnd, setProfiles, profiles}) {
     let starterFormData = {
         name: '',
         age: '',
-        gender: '',
-        sexuality: '',
-        info: '',
+        gender: 'Male',
+        sexuality: 'Gay',
+        bio: '',
         location: '',
-        image: '',
+        avatar: '',
     }
+
     const [formData, setFormData] = useState(starterFormData);
 
     function handleSubmit(e) {
         e.preventDefault()
         console.log(formData)
-        fetch(`/users`, {
+        fetch('/users', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -71,10 +72,10 @@ function NewUser({setIsItTheEnd, setProfiles, profiles}) {
                 </label>
                 Photo:
                 <label>
-                    <input type="text" name="image" placeholder='image' value={formData.image} onChange={handleChange} />
+                    <input type="text" name="avatar" placeholder='picture' value={formData.avatar} onChange={handleChange} />
                 </label>
                 <label>
-                    <textarea type="text" name="info" placeholder='info' value={formData.info} onChange={handleChange} />
+                    <textarea type="text" name="bio" placeholder='about you' value={formData.bio} onChange={handleChange} />
                 </label>
                 <button>Save</button>
             </form>
