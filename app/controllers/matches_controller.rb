@@ -20,6 +20,12 @@ class MatchesController < ApplicationController
         render json: match, status: :ok
     end
 
+    def my_matches
+        let matches = [];
+        User.find(params[:id]).matches.each {|x| if (x.match_check) then x << matches end}
+        render json: matches, status: :ok 
+    end
+
     private
 
     def match_params

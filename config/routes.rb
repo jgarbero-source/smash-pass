@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   resources :matches
   resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   get "/me", to: "users#me"
+  get "/me/matches/:id", to: "matches#my_matches"
 
   get '*path',
     to: 'fallback#index',

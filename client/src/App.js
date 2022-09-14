@@ -17,8 +17,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState([]);
   const profilesURL = "/users";
   const [profiles, setProfiles] = useState([]);
-  const [profileCount, setProfileCount] = useState(0);
-  const [isItTheEnd, setIsItTheEnd] = useState(false);
   const [background, setBackground] = useState(true);
 
   useEffect(() => {
@@ -60,17 +58,13 @@ function App() {
             path="/"
             element={<Bio bio={currentUser} setCurrentUser={setCurrentUser} />}
           ></Route>
-
           <Route
             path="/swiper"
             element={
               <Swiper
                 currentUser={currentUser}
                 profiles={profiles}
-                profileCount={profileCount}
-                setProfileCount={setProfileCount}
-                isItTheEnd={isItTheEnd}
-                setIsItTheEnd={setIsItTheEnd}
+                setProfiles={setProfiles}
               />
             }
           ></Route>
@@ -93,8 +87,6 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/:id/info" element={<Info />}></Route>
-
           <Route
             path="/bio/:id/edit"
             element={
