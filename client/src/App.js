@@ -11,6 +11,8 @@ import Swiper from "./components/Swiper.js";
 import EditForm from "./components/EditForm";
 import NewUser from "./components/NewUser";
 import Footer from "./components/Footer";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 function App() {
   const userURL = "/me";
@@ -58,6 +60,7 @@ function App() {
             path="/"
             element={<Bio bio={currentUser} setCurrentUser={setCurrentUser} />}
           ></Route>
+          <Route path ="/login" element={<Login />}/>
           <Route
             path="/swiper"
             element={
