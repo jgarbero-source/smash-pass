@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import "./App.css";
 
@@ -11,15 +11,17 @@ import Swiper from "./components/Swiper.js";
 import EditForm from "./components/EditForm";
 import NewUser from "./components/NewUser";
 import Footer from "./components/Footer";
-import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Home from "./components/Home";
+import UserNavBar from "./components/UserNavBar";
 
 function App() {
   const userURL = "/me";
-  const [currentUser, setCurrentUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
   const profilesURL = "/users";
   const [profiles, setProfiles] = useState([]);
   const [background, setBackground] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     goGetEm();
@@ -32,7 +34,6 @@ function App() {
       if (response.ok) {
         response.json().then((client) => {
           setCurrentUser(client);
-          console.log(client);
         });
       } else {
         console.log("Nope");
@@ -41,8 +42,7 @@ function App() {
     fetch(profilesURL).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setProfiles(data);
-          console.log(data);
+          setProfiles(data);;
         });
       } else {
         console.log("Nope");
@@ -50,17 +50,28 @@ function App() {
     });
   }
 
+  function handleLogin(user) {
+    setCurrentUser(user)
+  }
+
+  function doLogout() {
+    navigate("/home")
+    setCurrentUser(null)
+  }
+
   return (
     <div className="page-container">
-      <NavBar />
+      
       <div className={background ? "content-wrap" : `content-wrap-new`}>
+      {currentUser ? <UserNavBar  currentUser={currentUser} doLogout={doLogout}/> : <NavBar />}
         <Routes>
           <Route
             exact
             path="/"
             element={<Bio bio={currentUser} setCurrentUser={setCurrentUser} />}
           ></Route>
-          <Route path ="/login" element={<Login />}/>
+          <Route path ="/login" element={<Login handleLogin={handleLogin} />}/>
+          <Route path="/home" element={<Home />}/>
           <Route
             path="/swiper"
             element={
