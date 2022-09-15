@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom'
 
-function NewUser({setIsItTheEnd, setProfiles, profiles}) {
+function NewUser({setProfiles, profiles}) {
 
     let starterFormData = {
         name: '',
@@ -33,7 +33,7 @@ function NewUser({setIsItTheEnd, setProfiles, profiles}) {
             body: JSON.stringify(formData)
         }
         ).then(() => {
-            setIsItTheEnd(false)
+            // setIsItTheEnd(false)
             setProfiles([...profiles, formData])
             setFormData(starterFormData)
             navigate(`/login`)

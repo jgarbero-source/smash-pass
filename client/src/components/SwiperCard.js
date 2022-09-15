@@ -4,11 +4,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Info from "./Info.js"
 
 function SwiperCard({ profile }) {
     const [showBio, setShowBio] = useState(false)
     return (
-    <div className="card">
+      <div>
+      {showBio? <div className="card">
+      <Info profile = {profile} setShowBio={setShowBio} showBio={showBio}/></div>: <div className="card">
       <CardMedia
         className="img"
         component="img"
@@ -24,9 +27,8 @@ function SwiperCard({ profile }) {
         <Button onClick={()=>setShowBio(!showBio)}>
           Bio
         </Button>
-        {showBio? <Info profile = {profile}/> : null}
       </CardActions>
-    </div>
+    </div>}</div>
   );
 }
 

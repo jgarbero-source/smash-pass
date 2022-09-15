@@ -34,6 +34,45 @@ User.create(
     bio: "sweetest guy in town"
 )
 
+User.create(
+    avatar: 'woah',
+    name: "Jules",
+    email: "no@gmail.com",
+    age: 22,
+    username: "Jules",
+    password: "654321",
+    gender: "male",
+    sexuality: "gay",
+    location: "Nashville",
+    bio: "sweetest guy in town"
+)
+
+User.create(
+    avatar: 'yay',
+    name: "Bools",
+    email: "yo@gmail.com",
+    username: "bools",
+    password: "123456",
+    age: 21,
+    gender: "male",
+    sexuality: "gay",
+    location: "Smashville",
+    bio: "Long-dickedest guy in town"
+)
+
+User.create(
+    avatar: 'yay',
+    name: "Extra",
+    email: "yo@gmail.com",
+    username: "extra",
+    password: "1111",
+    age: 21,
+    gender: "male",
+    sexuality: "gay",
+    location: "nowhere",
+    bio: "blah blahs"
+)
+
 puts "seeding matches"
 
 Match.create(
@@ -41,4 +80,18 @@ Match.create(
     user_2_match: true,
     user_1_id: 1,
     user_2_id: 2
+)
+
+Match.create(
+    user_1_match: nil,
+    user_2_match: true,
+    user_1_id: 1,
+    user_2_id: 4
+)
+
+Match.create(
+    user_1_match: nil,
+    user_2_match: false,
+    user_1_id: 1,
+    user_2_id: 3
 )

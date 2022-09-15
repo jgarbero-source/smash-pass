@@ -5,22 +5,22 @@ import { useParams, useNavigate } from "react-router-dom";
 function EditForm({ currentUser, setCurrentUser }) {
 
     let navigate = useNavigate()
-    const { name, age, gender, sexuality, info, location, image } = currentUser
+    const { name, age, gender, sexuality, bio, location, avatar } = currentUser
     const { id } = useParams()
     let starterFormData = {
         name: name,
         age: age,
         gender: gender,
         sexuality: sexuality,
-        info: info,
+        bio: bio,
         location: location,
-        image: image,
+        avatar: avatar,
     }
     const [formData, setFormData] = useState(starterFormData);
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch(`users/${id}`, {
+        fetch(`/users/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -71,10 +71,10 @@ function EditForm({ currentUser, setCurrentUser }) {
                 </label>
                 Photo:
                 <label>
-                    <input type="text" name="image" placeholder='image' value={formData.image} onChange={handleChange} />
+                    <input type="text" name="image" placeholder='picture' value={formData.avatar} onChange={handleChange} />
                 </label>
                 <label>
-                    <textarea type="text" name="info" placeholder={info} value={formData.info} onChange={handleChange} />
+                    <textarea type="text" name="info" placeholder={bio} value={formData.bio} onChange={handleChange} />
                 </label>
                 <button>Save</button>
             </form>

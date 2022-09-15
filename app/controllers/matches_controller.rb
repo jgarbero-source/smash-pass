@@ -21,8 +21,8 @@ class MatchesController < ApplicationController
     end
 
     def my_matches
-        let matches = [];
-        User.find(params[:id]).matches.each {|x| if (x.match_check) then x << matches end}
+        matches = [];
+        User.find(params[:id]).matches.each {|x| if (x.match_check) then matches << x end}
         render json: matches, status: :ok 
     end
 

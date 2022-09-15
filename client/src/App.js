@@ -42,6 +42,7 @@ function App() {
     fetch(profilesURL).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
+          data.splice(data.findIndex(e => e.id === (currentUser ? currentUser.id : 0)), 1)
           setProfiles(data);;
         });
       } else {
@@ -68,7 +69,7 @@ function App() {
           <Route
             exact
             path="/"
-            element={<Bio bio={currentUser} setCurrentUser={setCurrentUser} />}
+            element={<Bio user={currentUser} setCurrentUser={setCurrentUser} />}
           ></Route>
           <Route path ="/login" element={<Login handleLogin={handleLogin} />}/>
           <Route path="/home" element={<Home />}/>
@@ -95,7 +96,7 @@ function App() {
             path="/newUser"
             element={
               <NewUser
-                setIsItTheEnd={setIsItTheEnd}
+                // setIsItTheEnd={setIsItTheEnd}
                 setProfiles={setProfiles}
                 profiles={profiles}
               />
