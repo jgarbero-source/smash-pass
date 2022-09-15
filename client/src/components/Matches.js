@@ -1,43 +1,39 @@
 import React, { useEffect, useState } from "react";
-import ProfileCard from "./ProfileCard.js"
+import ProfileCard from "./ProfileCard.js";
 
 function Matches({ currentUser }) {
-    // console.log(currentUser.id)
+  const [matches, setMatches] = useState([]);
+  useEffect(() => {
+    fetch(`/me/matches/${currentUser.id}`).then((r) => {
+      if (r.ok) {
+        r.json().then(setMatches(r));
+      } else console.log("Nope");
+    });
+  });
 
-    const matchURL = "/matches"
-    const [matches, setMatches] = useState([]);
+  function handleUnmatch(matchId) {
+    fetch(`matches/${matchId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: { user_1_match: false, user_2_match: false }
+    })
+  }
 
-    useEffect(() => {
-        fetch(`${matchURL}/${currentUser.id}`)
-            .then((response) => response.json())
-            .then(data => setMatches(data))
-    }, [currentUser]);
-
-    async function handleUnmatch(profileId) {
-        await fetch(`${matchURL}/${currentUser.id}/${profileId}/delete`, {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }
-        })
-        .then(r=>r.json())
-        .then(deletedMatch=>deleteMatches(deletedMatch))
-    }
-
-    function deleteMatches (deletedMatch) {
-        const updatedMatches = matches.filter(match => match.id !== deletedMatch.id)
-        setMatches(updatedMatches)
-    }
-
-
-    return (
-        <div className="matches-card">
-            {console.log(matches)}
-            {matches.map(profile => <ProfileCard profile={profile} key={profile.id} currentUser={currentUser} handleUnmatch = {handleUnmatch}/>)}
-
-        </div>
-    )
+  return (
+    <div className="matches-card">
+      {matches.map((profile) => (
+        <ProfileCard
+          profile={profile}
+          key={profile.id}
+          currentUser={currentUser}
+          handleUnmatch={handleUnmatch}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default Matches;
