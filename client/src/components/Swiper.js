@@ -11,17 +11,16 @@ function Swiper({ currentUser, profiles, setProfiles }) {
     let meth = "POST";
     let addy = matchURL;
     let obj = {
-      user_1_match: bool,
-      user_2_match: null,
-      user_1_id: currentUser.id,
-      user_2_id: profiles[0].id,
+      swipe: bool,
+      user_id: currentUser.id,
+      target: profiles[0].id,
     };
-    let matcha = profile.user_matches.find(match => match.user_2_id === currentUser.id)
+    let matcha = profile.user_matches.find(match => target === currentUser.id)
     console.log(matcha)
     if (matcha) {
       meth = "PATCH";
       addy = `${matchURL}/${matcha.id}`;
-      obj = { user_1_match: bool };
+      obj = { swipe: bool };
     }
     console.log(obj)
     fetch(addy, {

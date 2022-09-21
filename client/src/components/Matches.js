@@ -19,7 +19,7 @@ function Matches({ currentUser }) {
         "Content-Type": "application/json",
         "Accept": "application/json",
       },
-      body: { user_1_match: false, user_2_match: false }
+      body: { swipe: false }
     })
   }
 

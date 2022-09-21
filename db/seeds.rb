@@ -71,22 +71,19 @@ User.create(
 puts "seeding matches"
 
 Match.create(
-    user_1_match: true,
-    user_2_match: true,
-    user_1_id: 1,
-    user_2_id: 2
+    user_id: 2,
+    target: 1,
+    swipe: true
 )
 
 Match.create(
-    user_1_match: nil,
-    user_2_match: true,
-    user_1_id: 1,
-    user_2_id: 4
+    user_id: 4,
+    target: 1,
+    swipe: true
 )
 
 Match.create(
-    user_1_match: nil,
-    user_2_match: false,
-    user_1_id: 1,
-    user_2_id: 3
+    user_id: 3,
+    target: 1,
+    swipe: false
 )
