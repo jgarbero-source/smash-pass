@@ -9,7 +9,6 @@
 puts "seeding users"
 
 User.create(
-    avatar: 'yay',
     name: "Johnny Boy",
     email: "yo@gmail.com",
     username: "JB",
@@ -22,7 +21,6 @@ User.create(
 )
 
 User.create(
-    avatar: 'woah',
     name: "Bohnny Joy",
     email: "no@gmail.com",
     age: 22,
@@ -35,7 +33,6 @@ User.create(
 )
 
 User.create(
-    avatar: 'woah',
     name: "Jules",
     email: "no@gmail.com",
     age: 22,
@@ -48,7 +45,6 @@ User.create(
 )
 
 User.create(
-    avatar: 'yay',
     name: "Bools",
     email: "yo@gmail.com",
     username: "bools",
@@ -61,7 +57,6 @@ User.create(
 )
 
 User.create(
-    avatar: 'yay',
     name: "Extra",
     email: "yo@gmail.com",
     username: "extra",

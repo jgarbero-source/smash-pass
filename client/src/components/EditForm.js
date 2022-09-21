@@ -74,7 +74,7 @@ function EditForm({ currentUser, setCurrentUser }) {
                     <input type="text" name="image" placeholder='picture' value={formData.avatar} onChange={handleChange} />
                 </label>
                 <label>
-                    <textarea type="text" name="info" placeholder={bio} value={formData.bio} onChange={handleChange} />
+                    <textarea type="text" name="info" placeholder='bio' value={formData.bio} onChange={handleChange} />
                 </label>
                 <button>Save</button>
             </form>

@@ -30,49 +30,60 @@ function App() {
   //   setBackground(!background);
   // }
   function goGetEm() {
-    fetch(userURL).then((response) => {
-      if (response.ok) {
-        response.json().then((client) => {
-          setCurrentUser(client);
-        });
-      } else {
-        console.log("Nope");
-      }
-    });
-    fetch(profilesURL).then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          data.splice(data.findIndex(e => e.id === (currentUser ? currentUser.id : 0)), 1)
-          setProfiles(data);;
-        });
-      } else {
-        console.log("Nope");
-      }
-    });
+    fetch(userURL)
+      .then((response) => {
+        if (response.ok) {
+          response.json().then((client) => {
+            console.log(client);
+            setCurrentUser(client);
+          });
+        } else {
+          console.log("Nope");
+        }
+      })
+      .then(
+        fetch(profilesURL).then((response) => {
+          if (response.ok) {
+            response.json().then((data) => {
+                if (currentUser) {
+                  let dataMinus = data.filter(
+                  (element) => element.id != currentUser.id
+                );
+                console.log(dataMinus);
+                setProfiles(dataMinus)}
+            });
+          } else {
+            console.log("Nope");
+          }
+        })
+      );
   }
 
   function handleLogin(user) {
-    setCurrentUser(user)
+    setCurrentUser(user);
   }
 
   function doLogout() {
-    navigate("/home")
-    setCurrentUser(null)
+    navigate("/home");
+    setCurrentUser(null);
   }
 
   return (
     <div className="page-container">
-      
       <div className={background ? "content-wrap" : `content-wrap-new`}>
-      {currentUser ? <UserNavBar  currentUser={currentUser} doLogout={doLogout}/> : <NavBar />}
+        {currentUser ? (
+          <UserNavBar currentUser={currentUser} doLogout={doLogout} />
+        ) : (
+          <NavBar />
+        )}
         <Routes>
           <Route
             exact
             path="/"
             element={<Bio user={currentUser} setCurrentUser={setCurrentUser} />}
           ></Route>
-          <Route path ="/login" element={<Login handleLogin={handleLogin} />}/>
-          <Route path="/home" element={<Home />}/>
+          <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+          <Route path="/home" element={<Home />} />
           <Route
             path="/swiper"
             element={

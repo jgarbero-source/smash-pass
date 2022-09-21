@@ -3,8 +3,9 @@ import ProfileCard from "./ProfileCard.js";
 
 function Matches({ currentUser }) {
   const [matches, setMatches] = useState([]);
+
   useEffect(() => {
-    fetch(`/me/matches/${currentUser.id}`).then((r) => {
+    fetch(`/matches/${currentUser.id}`).then((r) => {
       if (r.ok) {
         r.json().then(setMatches(r));
       } else console.log("Nope");
@@ -24,7 +25,7 @@ function Matches({ currentUser }) {
 
   return (
     <div className="matches-card">
-      {matches.map((profile) => (
+      {matches.map(profile => (
         <ProfileCard
           profile={profile}
           key={profile.id}

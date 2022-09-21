@@ -16,7 +16,8 @@ function Swiper({ currentUser, profiles, setProfiles }) {
       user_1_id: currentUser.id,
       user_2_id: profiles[0].id,
     };
-    let matcha = profile.user_matches.find((match) => match.user_2_id === currentUser.id)
+    let matcha = profile.user_matches.find(match => match.user_2_id === currentUser.id)
+    console.log(matcha)
     if (matcha) {
       meth = "PATCH";
       addy = `${matchURL}/${matcha.id}`;
