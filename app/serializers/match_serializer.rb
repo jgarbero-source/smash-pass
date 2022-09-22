@@ -1,5 +1,5 @@
 class MatchSerializer < ActiveModel::Serializer
-  attributes :id, :user_id :target, :swipe
+  attributes :id, :user_id, :target, :swipe
   belongs_to :user
 
   # def match_check

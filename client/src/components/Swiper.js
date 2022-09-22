@@ -7,7 +7,7 @@ function Swiper({ currentUser, profiles, setProfiles }) {
   const matchURL = "/matches";
 
   function handleSwipe(bool) {
-    let profile = profiles[0];
+    let profile = profiles[0]
     let meth = "POST";
     let addy = matchURL;
     let obj = {
@@ -15,30 +15,53 @@ function Swiper({ currentUser, profiles, setProfiles }) {
       user_id: currentUser.id,
       target: profiles[0].id,
     };
-    let matcha = profile.user_matches.find(match => target === currentUser.id)
-    console.log(matcha)
+    let matcha = profile.matches.find(
+      (match) => match.target === currentUser.id
+    );
+    console.log(matcha);
+    console.log(bool);
     if (matcha) {
-      meth = "PATCH";
-      addy = `${matchURL}/${matcha.id}`;
-      obj = { swipe: bool };
+      if (matcha.swipe != bool) {
+        console.log("we're in");
+        if (matcha.swipe) {
+          fetch(`${addy}/${matcha.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(obj),
+          }).then((response) => {
+            if (response.ok) {
+              response.json().then((data) => console.log(data));
+            } else console.log("Nope");
+          });
+        }
+        if (bool) {
+          obj["swipe"] = !bool;
+        }
+      }
     }
-    console.log(obj)
+    console.log(obj);
     fetch(addy, {
       method: meth,
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(obj),
-    }).then(response => {if (response.ok) {
+    }).then((response) => {
+      if (response.ok) {
         response.json().then((data) => {
+          if (bool && matcha.swipe)
+          alert(`Congrats! You just matched with ${profile.name}`);
           setProfiles(profiles.slice(1));
           console.log(data);
         });
       } else {
         console.log("Nope");
       }
-    })
+    });
   }
 
   console.log(profiles);

@@ -77,13 +77,25 @@ Match.create(
 )
 
 Match.create(
+    user_id: 3,
+    target: 1,
+    swipe: false
+)
+
+Match.create(
     user_id: 4,
     target: 1,
     swipe: true
 )
 
 Match.create(
-    user_id: 3,
+    user_id: 1,
+    target: 5,
+    swipe: true
+)
+
+Match.create(
+    user_id: 5,
     target: 1,
-    swipe: false
+    swipe: true
 )
