@@ -1,11 +1,11 @@
 import React from "react";
 import BioForm from "./BioForm";
 
-function Bio({ bio }) {
+function Bio({ user }) {
 
     return (
         <div>
-            {bio ? <BioForm bio={bio} />: null}
+            {user ? <BioForm profile={user} />: null}
         </div>
     )
 }

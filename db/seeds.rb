@@ -9,7 +9,6 @@
 puts "seeding users"
 
 User.create(
-    avatar: 'yay',
     name: "Johnny Boy",
     email: "yo@gmail.com",
     username: "JB",
@@ -22,7 +21,6 @@ User.create(
 )
 
 User.create(
-    avatar: 'woah',
     name: "Bohnny Joy",
     email: "no@gmail.com",
     age: 22,
@@ -34,11 +32,70 @@ User.create(
     bio: "sweetest guy in town"
 )
 
+User.create(
+    name: "Jules",
+    email: "no@gmail.com",
+    age: 22,
+    username: "Jules",
+    password: "654321",
+    gender: "male",
+    sexuality: "gay",
+    location: "Nashville",
+    bio: "sweetest guy in town"
+)
+
+User.create(
+    name: "Bools",
+    email: "yo@gmail.com",
+    username: "bools",
+    password: "123456",
+    age: 21,
+    gender: "male",
+    sexuality: "gay",
+    location: "Smashville",
+    bio: "Long-dickedest guy in town"
+)
+
+User.create(
+    name: "Extra",
+    email: "yo@gmail.com",
+    username: "extra",
+    password: "1111",
+    age: 21,
+    gender: "male",
+    sexuality: "gay",
+    location: "nowhere",
+    bio: "blah blahs"
+)
+
 puts "seeding matches"
 
 Match.create(
-    user_1_match: true,
-    user_2_match: true,
-    user_1_id: 1,
-    user_2_id: 2
+    user_id: 2,
+    target: 1,
+    swipe: true
+)
+
+Match.create(
+    user_id: 3,
+    target: 1,
+    swipe: false
+)
+
+Match.create(
+    user_id: 4,
+    target: 1,
+    swipe: true
+)
+
+Match.create(
+    user_id: 1,
+    target: 5,
+    swipe: true
+)
+
+Match.create(
+    user_id: 5,
+    target: 1,
+    swipe: true
 )

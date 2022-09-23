@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-function Info({ profile }) {
+function Info({ profile, setShowBio, showBio }) {
   const { name, age, gender, sexuality, location, bio, avatar } = profile;
 
   return (
@@ -48,7 +48,7 @@ function Info({ profile }) {
             variant="body1"
             color="text.secondary"
           >{`Bio: ${bio}`}</Typography>
-          <Button className="button" onClick={handleClick}>
+          <Button className="button" onClick={()=>setShowBio(!showBio)}>
             <ArrowBackIcon />
           </Button>
         </CardContent>
